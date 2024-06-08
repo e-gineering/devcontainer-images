@@ -27,7 +27,7 @@ jobs:
     needs: find-subfolders
     strategy:
       matrix:
-        subfolder: ${{ fromJson(needs.find-subfolders.outputs.subfolders) }}
+        subfolder: [${{ needs.find-subfolders.outputs.subfolders }}]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

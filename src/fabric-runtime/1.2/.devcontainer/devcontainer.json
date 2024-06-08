@@ -3,6 +3,7 @@
   "build": {
     // "dockerfile": "${templateOption:imageVariant}/Dockerfile"
     "dockerfile": "../../Dockerfile",
+    "context": ".",
     "args": {
       "DEBIAN_VERSION": "bullseye",
       "JAVA_VERSION": "11",

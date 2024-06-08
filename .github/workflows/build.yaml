@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  find:
+  find-subfolders:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -13,20 +13,21 @@ jobs:
 
       - name: Find subfolders to build
         id: find
-        # List the two subdirectories under the src directory, and trim src/ off the front of the path
-        # Like: fabric-runtime/1.2
-        run: find src -mindepth 2 -maxdepth 2 -type d | sed 's|^src/||'
-
-      - name: Set outputs
-        id: set-outputs
-        # Output them with commas, like: fabric-runtime/1.2,fabric-runtime/1.3
-        run: echo "::set-output name=subfolders::$(echo "${{ steps.find.outputs.stdout }}" | tr '\n' ',')"
+        # List the two subdirectories under the src directory, trim src/
+        # off the front of the path, and output them with commas.
+        # Like: fabric-runtime/1.2,fabric-runtime/1.3
+        run: |
+          SUBFOLDERS=$(find src -mindepth 2 -maxdepth 2 -type d | sed 's|^src/||' | tr '\n' ',')
+          echo "::set-output name=subfolders::$SUBFOLDERS"
+    outputs:
+      subfolders: ${{ steps.find.outputs.subfolders }}
 
   build:
     runs-on: ubuntu-latest
+    needs: find-subfolders
     strategy:
       matrix:
-        subfolder: ${{ steps.set-outputs.outputs.subfolders }}
+        subfolder: ${{ fromJson(needs.find-subfolders.outputs.subfolders) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

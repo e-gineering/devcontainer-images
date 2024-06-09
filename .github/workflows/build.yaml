@@ -11,6 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install jq and jc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jc
+
       # List the two subdirectories under the src directory, and turn it into a json array for easier parsing in the next step.
       # Like: ["./fabric-runtime/1.1","./fabric-runtime/1.2"]
       - name: Find subfolders to build

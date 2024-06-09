@@ -27,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: find-subfolders
     strategy:
+      # Don't fail all the builds if one fails
+      fail-fast: false
       matrix:
         subfolder: ${{ fromJson(needs.find-subfolders.outputs.subfolders) }}
     steps:

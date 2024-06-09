@@ -45,12 +45,16 @@ jobs:
       - name: Parse out the image name and tag
         id: parse
         run: |
+          echo "Parsing subfolder: ${{ matrix.subfolder }}"
+
           # The first part is the image name
           IMAGE_NAME=$(echo ${{ matrix.subfolder }} | cut -d / -f 1)
+          echo "The image name is: $IMAGE_NAME"
           echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
 
           # And the second part is the image tag
           IMAGE_TAG=$(echo ${{ matrix.subfolder }} | cut -d / -f 2)
+          echo "The image tag is: $IMAGE_TAG"
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
 
       - name: Build images

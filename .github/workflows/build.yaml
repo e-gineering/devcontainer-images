@@ -11,10 +11,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install jq and jc
+      - name: Install jc
         run: |
-          sudo apt-get update
-          sudo apt-get install -y jc
+          curl https://github.com/kellyjonbrazil/jc/releases/download/v1.25.2/jc_1.25.2-1_amd64.deb -o jc.deb
+          sudo dpkg -i jc.deb
 
       # List the two subdirectories under the src directory, and turn it into a json array for easier parsing in the next step.
       # Like: ["./fabric-runtime/1.1","./fabric-runtime/1.2"]

@@ -13,11 +13,11 @@ jobs:
 
       - name: Find subfolders to build
         id: find
-        # List the two subdirectories under the src directory, trim src/ off the front of
-        # the path, and turn it into a json array for easier parsing in the next step.
+        # List the two subdirectories under the src directory, trim src/ off the front of the path,
+        # trim the final newline, and turn it into a json array for easier parsing in the next step.
         # Like: ["fabric-runtime/1.2","fabric-runtime/1.3"]
         run: |
-          SUBFOLDERS=$(find src -mindepth 2 -maxdepth 2 -type d | sed 's|^src/||' | jq --raw-input --slurp --compact-output 'split("\n")')
+          SUBFOLDERS=$(find src -mindepth 2 -maxdepth 2 -type d | sed 's|^src/||' | tr -d '\n' | jq --raw-input --slurp --compact-output 'split("\n")')
           echo "Found subfolders: $SUBFOLDERS"
           echo "SUBFOLDERS=$SUBFOLDERS" >> $GITHUB_ENV
     outputs:

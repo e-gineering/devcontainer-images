@@ -1,8 +1,9 @@
 ARG DEBIAN_VERSION
-ARG JAVA_VERSION
 ARG PYTHON_VERSION
 
 FROM mcr.microsoft.com/devcontainers/python:1-${PYTHON_VERSION}-${DEBIAN_VERSION}
+
+ARG JAVA_VERSION
 
 RUN apt-get update && \
   apt-get install -y \

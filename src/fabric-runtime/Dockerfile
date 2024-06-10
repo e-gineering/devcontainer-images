@@ -4,6 +4,7 @@ ARG PYTHON_VERSION
 FROM mcr.microsoft.com/devcontainers/python:1-${PYTHON_VERSION}-${DEBIAN_VERSION}
 
 ARG JAVA_VERSION
+ENV JAVA_HOME /usr/lib/jvm/java-${JAVA_VERSION}-openjdk-amd64
 
 RUN apt-get update && \
   apt-get install -y \

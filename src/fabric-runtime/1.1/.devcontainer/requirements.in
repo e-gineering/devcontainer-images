@@ -1,8 +1,0 @@
-pip-tools
-requests
-
-# Matching the Runtime 1.1 in Fabric
-# https://learn.microsoft.com/en-us/fabric/data-engineering/runtime-1-1
-# https://github.com/microsoft/synapse-spark-runtime/tree/main/Fabric/spark3.3
-pyspark==3.3.1
-delta-spark==2.2.0

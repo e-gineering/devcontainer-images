@@ -6,5 +6,6 @@ delta-spark==2.4.0
 
 pip-tools
 requests
-datetime
+python-dateutil
+python-dotenv
 dummy-notebookutils

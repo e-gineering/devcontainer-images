@@ -1,0 +1,13 @@
+version: 3
+
+tasks:
+  regenerate-requirements-txt:
+    cmd: |
+      cd src/fabric-runtime/1.2/.devcontainer
+      docker run --rm -v .:/mnt mcr.microsoft.com/devcontainers/python:1-3.10-bullseye bash -c "
+        cd /mnt
+        python -m venv .venv
+        source .venv/bin/activate
+        pip install -r requirements.txt
+        pip-compile
+      "

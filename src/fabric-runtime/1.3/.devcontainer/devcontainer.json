@@ -1,0 +1,16 @@
+{
+  "name": "Fabric Runtime 1.3",
+  "build": {
+    "dockerfile": "../../Dockerfile",
+    "context": ".",
+    "args": {
+      "DEBIAN_VERSION": "bullseye",
+      "PYTHON_VERSION": "3.11"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "11"
+    }
+  }
+}

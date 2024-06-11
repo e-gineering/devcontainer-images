@@ -5,8 +5,12 @@
     "context": ".",
     "args": {
       "DEBIAN_VERSION": "bullseye",
-      "JAVA_VERSION": "11",
       "PYTHON_VERSION": "3.10"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "11"
     }
   }
 }

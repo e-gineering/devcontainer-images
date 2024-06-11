@@ -5,8 +5,12 @@
     "context": ".",
     "args": {
       "DEBIAN_VERSION": "buster",
-      "JAVA_VERSION": "8",
       "PYTHON_VERSION": "3.10"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "8"
     }
   }
 }
